@@ -1,5 +1,5 @@
 <?php 
-echo " <br>welcome to view home index.php";
+echo " <br>welcome to contact index.php";
 echo " <br> Hi " . $data['name'];
 
 
@@ -9,11 +9,11 @@ echo " <br> Hi " . $data['name'];
  <html lang="en">
  <head>
  	<meta charset="UTF-8">
- 	<title>home-index</title>
+ 	<title>contact-index</title>
  </head>
  <body>
 
- 	<h1>HOME</h1>
+ 	<h1>Contact</h1>
 
  </body>
  </html>

@@ -18,7 +18,7 @@ class App
 			{
 				$this->controller = $url[0];
 				unset($url[0]);
-				// el unset es necesario para la selección de los params
+				
 			}else {
 				http_response_code(404);
 				$this->controller = '_404';
@@ -37,7 +37,7 @@ class App
 			{
 				$this->method = $url[1];
 				unset($url[1]); 
-				// el unset es necesario para la selección de los params
+				
 			}
 		}
 		
@@ -49,6 +49,8 @@ class App
 		//print_r($url);
 
 	}
+
+
 
 	public function parseUrl()
 	{
