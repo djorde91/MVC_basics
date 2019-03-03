@@ -12,14 +12,18 @@ class App
 		//print_r($this-> parseUrl());
 		$url = $this->parseUrl();
 
-		
-
-		if (file_exists('../app/controllers/' . $url[0]. '.php')) 
+		if(isset($url[0]) &&  $url[0] !== "")
 		{
-			$this->controller = $url[0];
-			unset($url[0]);
-			// el unset es necesario para la selección de los params
-		}
+			if (file_exists('../app/controllers/' . $url[0]. '.php')) 
+			{
+				$this->controller = $url[0];
+				unset($url[0]);
+				// el unset es necesario para la selección de los params
+			}else {
+				http_response_code(404);
+				$this->controller = '_404';
+			}	
+		}	
 
 		require_once '../app/controllers/' . $this->controller . '.php';
 
@@ -52,6 +56,7 @@ class App
 		{
 				//echo '<br>'. $_GET['url'];
 				return $url = explode('/',filter_var(trim($_GET['url'], '/'),FILTER_SANITIZE_URL));
+				
 		}
 	}
 

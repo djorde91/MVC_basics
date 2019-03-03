@@ -13,13 +13,9 @@ class Home extends Controller
 	
 	public function index($param1 = '', $param2 = '')
 	{
-		echo 'home controller and method index()';
-		echo " <br> param1 = $param1 <br> param2= $param2";
 
 		$this->user->name = $param1;
-
 		$this->view('home/index', ['name' => $this->user->name]);
-
 
 	}
 
