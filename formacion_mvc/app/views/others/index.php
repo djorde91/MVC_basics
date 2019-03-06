@@ -1,18 +1,16 @@
 <?php 
-echo " <br> Hi " . $data['name'];
-
-
+echo " <br> Hi " . $data['content'];
  ?>
 
  <!DOCTYPE html>
  <html lang="en">
  <head>
  	<meta charset="UTF-8">
- 	<title>home-index</title>
+ 	<title>others-index</title>
  </head>
  <body>
 
- 	<h1>HOME</h1>
+ 	<h1> Others</h1>
 
  </body>
  </html>
