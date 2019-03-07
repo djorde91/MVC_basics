@@ -11,27 +11,20 @@ class App
 	//Permitir al usuario crear sus propias páginas desde la home
 	//Pendiente hacer un select en la BBDD de las páginas creadas por el usuario y añadirlas al array. (CMS)
 
-	protected $others_controllers = array("contacto", "sponsors", "productos");
+	protected $urls = [
+		'quienes-somos/contacto' => 'others/Contacto',
+		'producto/{id}'
+	];
 
 	public function __construct()
 	{
-		//print_r($this-> parseUrl());
-
 		$this->url = $this->parseUrl();
-
 
 		if(isset($this->url[0]) &&  $this->url[0] !== "")
 		{
 			if (file_exists('../app/controllers/' . $this->url[0]. '.php')) 
 			{
 				$this->controller = $this->url[0];
-				
-				
-			}else if( in_array($this->url[0],$this->others_controllers)){
-				$this->controller = "others";
-				$this->method = $this->url[0]; //ESTO ES MUY HACKY. ESTA MAL
-				
-
 			}else {
 				http_response_code(404);
 				$this->controller = '_404';
@@ -69,8 +62,12 @@ class App
 	{
 		if (isset($_GET['url'])) 
 		{
-				//echo '<br>'. $_GET['url'];
-				return $url = explode('/',filter_var(trim($_GET['url'], '/'),FILTER_SANITIZE_URL));
+			$url = $_GET['url'];
+
+			if(isset($this->urls[$_GET['url']]))
+				$url = $this->urls[$_GET['url']];
+
+			return $url = explode('/',filter_var(trim($url, '/'),FILTER_SANITIZE_URL));
 				
 		}
 	}

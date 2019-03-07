@@ -1,7 +1,3 @@
-<?php 
-echo " <br> Hi " . $data['content'];
- ?>
-
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -10,7 +6,7 @@ echo " <br> Hi " . $data['content'];
  </head>
  <body>
 
- 	<h1> Others</h1>
+ 	<?php echo $data['text']; ?>
 
  </body>
  </html>
