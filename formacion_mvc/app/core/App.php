@@ -12,8 +12,8 @@ class App
 	//Pendiente hacer un select en la BBDD de las páginas creadas por el usuario y añadirlas al array. (CMS)
 
 	protected $urls = [
-		'quienes-somos/contacto' => 'others/Contacto',
-		'producto/{id}'
+		'quienes-somos/contacto' => 'others/esto es una página de contacto',
+		'admin' => 'others/que tal',
 	];
 
 	public function __construct()
