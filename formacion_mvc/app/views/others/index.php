@@ -1,10 +1,9 @@
  <?php 
-if(isset($_POST['adminLogin']) ){
+if(isset($_POST['f_iniciar']) ){
 
-		$control->control_login();	
-	}
-
-
+		$this->login();
+}
+	
   ?>
 
  <!DOCTYPE html>
@@ -19,7 +18,7 @@ if(isset($_POST['adminLogin']) ){
  	<style>
  		.cute_form{
  			padding: 15px;
- 			margin: auto;
+ 			margin: 25px auto;
  			border: 1px solid lightgrey;
  			border-radius: 10px;
 
@@ -31,23 +30,31 @@ if(isset($_POST['adminLogin']) ){
  </head>
  <body>
 
- 	<?php echo $data['text']; ?>
+ 
+<?php if (isset($_SESSION['session_usuario'])){
 
+	echo " <br> CRUD de creación de páginas y contenido";
+
+ }else{
+ 	echo '
  	<div class="row">
  		<div class="col-sm-6 cute_form">
- 			<form method="post" name="loginAdmin">
+ 			<form method="post" name="loginAdmin" action="">
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Email address</label>
-				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-				    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				    <label for="exampleInputEmail1">User</label>
+				    <input name="f_username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="admin">
+				    
 				  </div>
 				  <div class="form-group">
 				    <label for="exampleInputPassword1">Password</label>
-				    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				    <input name="f_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="admin">
 				  </div>
-				  <button type="submit" class="btn btn-primary" name="adminLogin">Submit</button>
+				  <button type="submit" class="btn btn-primary" name="f_iniciar">Submit</button>		  
 			</form>			
  		</div>
- 	</div>
+ 	</div> ';
+ }?>
  </body>
  </html>
+
+ <?php echo $data['text']; ?>

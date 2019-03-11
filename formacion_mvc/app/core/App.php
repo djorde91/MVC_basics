@@ -12,8 +12,8 @@ class App
 	//Pendiente hacer un select en la BBDD de las páginas creadas por el usuario y añadirlas al array. (CMS)
 
 	protected $urls = [
-		'quienes-somos/contacto' => 'others/esto es una página de contacto',
-		'admin' => 'others/que tal',
+		'contacto' => 'others/contacto',
+		'admin' => 'others/admin',
 	];
 
 	public function __construct()
@@ -52,7 +52,6 @@ class App
 		$this->params= $this->url ? array_values($this->url) : [];
 
 		call_user_func_array([$this->controller,$this->method], $this->params);
-		echo "<br>";
 		//print_r($url);
 
 	}
