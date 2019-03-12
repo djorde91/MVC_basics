@@ -26,7 +26,7 @@ class m_Others
               //Falta hashear la contraseña.
              if ( $p_password == $filas['user_password']) {  
 
-              $_SESSION['session_usuario'] = $filas['user_name']; 
+              $_SESSION['session_usuario'] = $filas['user_name'];    
 
             return true;
 

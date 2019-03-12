@@ -2,7 +2,6 @@
 
 class App
 {
-
 	protected $controller = 'home';
 	protected $method = 'index';
 	protected $params = [];
@@ -18,11 +17,12 @@ class App
 
 	public function __construct()
 	{
+
 		$this->url = $this->parseUrl();
 
 		if(isset($this->url[0]) &&  $this->url[0] !== "")
 		{
-			if (file_exists('../app/controllers/' . $this->url[0]. '.php')) 
+			if (file_exists($_SERVER['DOCUMENT_ROOT']. "/app/controllers/" . $this->url[0]. '.php')) 
 			{
 				$this->controller = $this->url[0];
 			}else {
@@ -32,7 +32,9 @@ class App
 			unset($this->url[0]);	
 		}	
 
-		require_once '../app/controllers/' . $this->controller . '.php';
+		require_once ($_SERVER['DOCUMENT_ROOT']. "/app/controllers/" . 'ajax' . ".php");
+		require_once ($_SERVER['DOCUMENT_ROOT']. "/app/controllers/" . $this->controller . ".php");
+	
 
 		//echo $this->controller;
 		$this->controller = new $this->controller;
