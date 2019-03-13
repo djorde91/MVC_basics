@@ -11,8 +11,7 @@ $( document ).ready(function() {
 	              type:'POST',
 	             
 	              data: {
-	              		// es necesario enviar todo el contenido, ya que si queremos trabajar con los input 
-	              		 //individualmente el serialize no nos sirve, al mismo tiempo necesitamos darle valor a $_POST['f_iniciar']	              		
+	                          		
 	              		 f_iniciar: $(this).serialize(),  
 	              		 f_username: username,	                    	                     
 	                     f_password: pass

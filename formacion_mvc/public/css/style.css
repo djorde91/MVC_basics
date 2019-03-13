@@ -1,0 +1,32 @@
+	.cute_form{
+		padding: 15px;
+		margin: 25px auto;
+		border: 1px solid lightgrey;
+		border-radius: 10px;
+		width: 60%;
+
+	}
+
+	.cute_crud{
+		width: 60%;
+		margin: 25px auto;
+		padding: 15px;
+	}
+	.cute_crud tr td {
+		width: 20% !important;
+	}
+
+	.cute_close_session{
+		margin: auto;
+		text-align: right; 
+		width: 50%;
+	}
+
+	.row{
+		margin-left: 0;
+		margin-right: 0;
+	}
+		/* Borramos la notice de tinymce */
+	.tox .tox-notification--in{
+		display: none !important;
+	}
