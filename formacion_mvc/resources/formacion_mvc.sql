@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-03-2019 a las 20:06:31
+-- Tiempo de generación: 13-03-2019 a las 22:30:37
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.0.32
 
@@ -44,6 +44,72 @@ INSERT INTO `cliente` (`name`, `phone`) VALUES
 ('andres', '54'),
 ('andres', '54'),
 ('andres', '54');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pages`
+--
+
+CREATE TABLE `pages` (
+  `page_id` int(11) NOT NULL,
+  `page_name` varchar(255) NOT NULL,
+  `page_content` longtext NOT NULL,
+  `page_url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pages`
+--
+
+INSERT INTO `pages` (`page_id`, `page_name`, `page_content`, `page_url`) VALUES
+(1, 'historia', '<h1> Esta es una página de historia </h1>', '/historia'),
+(2, 'productos', '<h1> página de productos </h1>', '/productos'),
+(3, 'fruta', '<h1> las frutas son dulces </h1>\r\n<h2> Los kiwis son verdes </h2>', '/frutas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `user_name` varchar(255) NOT NULL,
+  `user_password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`user_name`, `user_password`) VALUES
+('admin', 'admin');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `pages`
+--
+ALTER TABLE `pages`
+  ADD PRIMARY KEY (`page_id`);
+
+--
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_name`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `pages`
+--
+ALTER TABLE `pages`
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
