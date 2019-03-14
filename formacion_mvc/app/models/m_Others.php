@@ -43,48 +43,23 @@ class m_Others
           }
     }
 
-    public function show_pages(){
+    public function show_pages($id = false, $columns = "*"){
 
       try{
+          $query = "SELECT $columns FROM pages";
+          $args = array();
 
-          $stmt = $this->conn->do_query("SELECT * FROM pages");
-          $stmt->execute(array());
-
-          $array_pages = array(); 
-          $contador = 0;
-
-          while($registro = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-            $array_pages[$contador] = $registro;
-            $contador++;
-
+          if($id !== false){
+            $query .= " WHERE page_id=:page_id";
+            $args = array(':page_id'=>$id);
           }
-          return $array_pages;
 
-        }
-        catch(PDOException $e){
+          $stmt = $this->conn->do_query($query);
+          $stmt->execute($args);
 
-            echo $e->getMessage();
-            echo $e->getLine();
-          }
-    }
-
-    //LA FUNCION SHOW_PAGES Y EDIT_PAGES SE PARECEN MUCHO. COMO SE PODRÍA OPTIMIZAR MÁS EL CÓDIGO?
-    public function edit_pages($p_page_id){
-
-      try{
-
-          $stmt = $this->conn->do_query("SELECT page_content FROM pages WHERE page_id=:page_id");
-          $stmt->execute(array(':page_id'=>$p_page_id));
-  
-          $array_content = array(); 
+          $array_pages = $stmt->fetchAll(PDO::FETCH_ASSOC);
           
-          while($registro = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-            $array_content = $registro;
-            
-          } 
-          return $array_content;
+          return $array_pages;
 
         }
         catch(PDOException $e){

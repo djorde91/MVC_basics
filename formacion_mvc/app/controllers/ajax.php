@@ -52,7 +52,7 @@ class Ajax extends Controller
 
 		public function ajax_edit_pages(){
 
-			$array_pages = $this->content->edit_pages($_POST['f_pageToEdit']);	
+			$array_pages = $this->content->show_pages($_POST['f_pageToEdit'], 'page_content')[0];	
 			    echo '
 				    <div class="row">
 				        <div class="cute_crud">

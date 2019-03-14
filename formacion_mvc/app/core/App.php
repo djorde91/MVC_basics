@@ -13,6 +13,7 @@ class App
 	protected $urls = [
 		'contacto' => 'others/contacto',
 		'admin' => 'others/admin',
+		'test' => 'home/test'
 	];
 
 	public function __construct()
@@ -50,7 +51,6 @@ class App
 			}
 		}
 		
-		
 		$this->params= $this->url ? array_values($this->url) : [];
 
 		call_user_func_array([$this->controller,$this->method], $this->params);
@@ -67,7 +67,8 @@ class App
 
 			if(isset($this->urls[$_GET['url']]))
 				$url = $this->urls[$_GET['url']];
-
+            //array($result['page_url'], $result[])
+            //
 			return $url = explode('/',filter_var(trim($url, '/'),FILTER_SANITIZE_URL));
 				
 		}
