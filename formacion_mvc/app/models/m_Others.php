@@ -69,5 +69,68 @@ class m_Others
           }
     }
 
+    public function update_content($p_content, $p_id){
 
-}
+      try{
+  
+            $stmt = $this->conn->do_query("UPDATE pages SET page_content = :content WHERE page_id = :pageid ");      
+            $stmt->bindparam(":content", $p_content);
+            $stmt->bindparam(":pageid", $p_id);
+        
+            $stmt->execute(); 
+            
+            return $stmt; 
+      }
+
+      catch(PDOException $e)
+      {
+        echo $e->getMessage();
+        echo $e->getLine();
+
+      }       
+    }
+
+    public function create_page($p_pagename){
+
+      try{
+            $page_url = "/" .$p_pagename;
+
+            $stmt = $this->conn->do_query("INSERT INTO pages(page_name,page_url) 
+                                                         VALUES(:pagename, :pageurl)");
+            
+            $stmt->bindparam(":pagename", $p_pagename);
+            $stmt->bindparam(":pageurl", $page_url);
+              
+            $stmt->execute(); 
+            
+            return $stmt; 
+      }catch(PDOException $e)
+      {
+        echo $e->getMessage();
+        echo $e->getLine();
+      }       
+    }
+
+    public function delete_page($p_page_id){
+
+      try{
+         
+            $stmt = $this->conn->do_query("DELETE FROM pages WHERE page_id= :pageid");
+            
+            $stmt->bindparam(":pageid", $p_page_id);
+              
+            $stmt->execute(); 
+            
+            return $stmt; 
+      }catch(PDOException $e)
+      {
+        echo $e->getMessage();
+        echo $e->getLine();
+      }       
+    }
+
+
+
+    
+    }
+

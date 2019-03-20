@@ -20,7 +20,7 @@ class User
   
             $stmt = $this->conn->do_query("INSERT INTO cliente(name, phone) 
                                                          VALUES(:username, :phone)");
-                   
+            
             $stmt->bindparam(":username", $p_username);
             $stmt->bindparam(":phone", $p_phone);
               

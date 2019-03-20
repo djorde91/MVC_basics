@@ -26,6 +26,17 @@ class Ajax extends Controller
 								
 		}
 
+		public function ajax_create_page(){
+			$this->content->create_page($_POST['f_page_name']);
+
+
+		}
+
+		public function ajax_delete_page(){
+			$this->content->delete_page($_POST['f_pageToDelete']);
+		
+		}
+
 		public function ajax_show_pages(){
 
 			$array_pages = $this->content->show_pages();	
@@ -38,11 +49,23 @@ class Ajax extends Controller
 			      <td> '. $value["page_url"] .' </td>
 			      <td> '. $value["page_name"] .' </td>
 			      <td>
-			        <form method="post" name="" action="">
-			            <button type="submit" class="btn btn-info" name="f_editar">Editar</button>
-			            <button type="submit" class="btn btn-danger" name="f_eliminar">Eliminar</button>
+			      <div class="row">
+
+			      <div class="col-md-12">
+			        <form style="float:left; margin-right:5px;" method="post" name="" action="">
+			            <button type="submit" class="btn btn-info" >Editar</button>
 			            <input type="hidden" name="f_pageToEdit" value="'. $value["page_id"].'"/>
 			        </form>
+
+			        <form method="post" name="" action="">
+			            <button type="submit" class="btn btn-danger" >Eliminar</button>
+			            <input type="hidden" name="f_pageToDelete" value="'. $value["page_id"].'"/>
+			        </form>
+
+				  </div>
+				 </div>
+
+			       
 			      </td>
 			    </tr>  
 			    ';
@@ -52,15 +75,27 @@ class Ajax extends Controller
 
 		public function ajax_edit_pages(){
 
-			$array_pages = $this->content->show_pages($_POST['f_pageToEdit'], 'page_content')[0];	
+			$array_pages = $this->content->show_pages($_POST['f_pageToEdit'] )[0];
+			//var_dump($array_pages);
 			    echo '
 				    <div class="row">
-				        <div class="cute_crud">
-				        <textarea class="tinymce_class">'. $array_pages["page_content"] . '</textarea>
-				        </div>
+				    	<div class="cute_crud">
+				    		<form action="" method="post">
+				        
+				        		<textarea name="f_content" class="tinymce_class">'. $array_pages["page_content"] . '</textarea>
+				        		<div class="tiny_submit_position" >
+				    				<button type="submit" class="btn btn-success">Actualizar página</button>
+									<input type="hidden" name="f_content_edit" value="'. $array_pages["page_id"].'"/>
+								</div>
+
+				    		</form>
+				    	</div>
 				        
 				    </div>
 				    ';
+			//var_dump($_POST['f_content']);
+			//var_dump($_POST['f_content_edit']);
+       			$this->content->update_content($_POST['f_content'], $_POST['f_content_edit'] );                        
 
 		}
 

@@ -8,25 +8,47 @@
 	}
 
 	.cute_crud{
-		width: 60%;
 		margin: 25px auto;
 		padding: 15px;
+	}
+	.cute_crud table{
+		margin: auto;
+	}
+	.cute_crud button{
+		margin: auto;
 	}
 	.cute_crud tr td {
 		width: 20% !important;
 	}
 
 	.cute_close_session{
-		margin: auto;
 		text-align: right; 
-		width: 50%;
+		width: 100%;
 	}
 
 	.row{
 		margin-left: 0;
 		margin-right: 0;
 	}
-		/* Borramos la notice de tinymce */
+	
+	/* Borramos la notice de tinymce */
 	.tox .tox-notification--in{
 		display: none !important;
+	}
+	/* Borramos la notice de tinymce */
+
+	.tiny_submit_position{
+		width: 100%;
+		text-align: right;
+		margin-top: 10px;
+	}
+	#insertar_form{
+		border-radius: 10px;
+		border: 1px solid lightgrey;
+		padding: 10px;
+
+	}
+
+	.show_div{
+		display: none;
 	}

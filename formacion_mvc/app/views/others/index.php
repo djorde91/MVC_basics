@@ -11,10 +11,17 @@
     if(isset($_POST['f_iniciar']) ){
                 $ajax->login();
                 exit();
-                // para que la response no cargue el html.
+               
     }
 
-
+    if(isset($_POST['f_page_name']) ){
+                $ajax->ajax_create_page();
+               
+    }
+    if (isset($_POST['f_pageToDelete']) ) {
+    			$ajax->ajax_delete_page();
+    }
+    
  ?>
 <!DOCTYPE html>
  <html lang="en">
@@ -35,8 +42,9 @@
 <?php if (isset($_SESSION['session_usuario']) /*isset cookie.. Falta la cookie*/){
 
 	echo '
-	<div class="cute_crud">
-    <table class="table table-striped">
+	<div class="row cute_crud">
+
+    <table class="table col-md-12 table-striped">
         <thead>
             <tr>
                 <th>Page ID</th>
@@ -55,12 +63,27 @@
     </table>
 </div>
 
-	<div class="row">
-		<div class="cute_close_session">
-		<form method="post" name="closeSession" action="">
-			<button type="submit" class="btn btn-warning" name="f_sesion">Cerrar sesión</button>			  		  
-		</form>				
-		</div>
+	<div class="row cute_crud" style="text-align: left;">
+			<form class="col-md-2" method="post" name="closeSession" action="">
+				<button type="submit" class="btn btn-warning" name="f_sesion">Cerrar sesión</button>			  		  
+			</form>
+
+			<div class="col-md-3">
+				<button onclick="showDiv();" type="button" class="btn btn-success" name="f_newpage">Crear página</button>
+			</div>
+
+			<div id="insertar_form" class="show_div">
+				<form action="" method="post">
+					<input type="text" name="f_page_name">
+					<input type="submit" value="Crear">
+				</form>
+
+			</div>
+				
+
+
+
+
 	</div>';
 
 
@@ -94,10 +117,15 @@
 
  
  }
+// EL EDIT NO FUNCIONA CORRECTAMENTE. REVISAR Y HABILITAR AJAX.
+//if (isset($_POST['f_pageToEdit']) ) {
+    	$ajax->ajax_edit_pages();
+  //}
 
- if (isset($_POST['f_editar'])) {
-        $ajax->ajax_edit_pages();
- }
+	
+ 
+
+ 
 
  ?>
 

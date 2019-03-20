@@ -3,6 +3,11 @@ tinymce.init({
 	plugins: "code",
 
 	selector: "textarea.tinymce_class",
+	    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    },
 
 	width: "100%",
 	height: 300,
@@ -14,3 +19,10 @@ tinymce.init({
 
 
 })
+
+
+function showDiv() {
+
+    var button = document.getElementById('insertar_form');
+  			$("#insertar_form").toggleClass("show_div");
+}
