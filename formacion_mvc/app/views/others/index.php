@@ -73,17 +73,13 @@
 			</div>
 
 			<div id="insertar_form" class="show_div">
-				<form action="" method="post">
+				<form id="crear_pagina" action="" method="post">
 					<input type="text" name="f_page_name">
 					<input type="submit" value="Crear">
 				</form>
 
 			</div>
 				
-
-
-
-
 	</div>';
 
 
@@ -117,15 +113,14 @@
 
  
  }
-// EL EDIT NO FUNCIONA CORRECTAMENTE. REVISAR Y HABILITAR AJAX.
-//if (isset($_POST['f_pageToEdit']) ) {
-    	$ajax->ajax_edit_pages();
-  //}
 
-	
- 
+if (isset($_POST['f_pageToEdit']) ) {
+    	$ajax->ajax_edit_pages(); 
+  }
 
- 
+if (isset($_POST['f_content_edit']) ) {
+    	$ajax->ajax_update_page();
+  }
 
  ?>
 

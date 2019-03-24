@@ -37,6 +37,11 @@ class Ajax extends Controller
 		
 		}
 
+		public function ajax_update_page(){
+			$this->content->update_content($_POST['f_content'], $_POST['f_content_edit'] );
+
+		}
+
 		public function ajax_show_pages(){
 
 			$array_pages = $this->content->show_pages();	
@@ -52,12 +57,12 @@ class Ajax extends Controller
 			      <div class="row">
 
 			      <div class="col-md-12">
-			        <form style="float:left; margin-right:5px;" method="post" name="" action="">
+			        <form class="form_edit" style="float:left; margin-right:5px;" method="post" name="" action="">
 			            <button type="submit" class="btn btn-info" >Editar</button>
 			            <input type="hidden" name="f_pageToEdit" value="'. $value["page_id"].'"/>
 			        </form>
 
-			        <form method="post" name="" action="">
+			        <form class="form_delete" method="post" name="" action="">
 			            <button type="submit" class="btn btn-danger" >Eliminar</button>
 			            <input type="hidden" name="f_pageToDelete" value="'. $value["page_id"].'"/>
 			        </form>
@@ -80,8 +85,8 @@ class Ajax extends Controller
 			    echo '
 				    <div class="row">
 				    	<div class="cute_crud">
-				    		<form action="" method="post">
-				        
+				    		<form id="actualizar_pagina" action="" method="post">
+				        		<h2 id="page_title"> Page: '. $array_pages["page_name"] .'</h2>
 				        		<textarea name="f_content" class="tinymce_class">'. $array_pages["page_content"] . '</textarea>
 				        		<div class="tiny_submit_position" >
 				    				<button type="submit" class="btn btn-success">Actualizar página</button>
@@ -95,7 +100,7 @@ class Ajax extends Controller
 				    ';
 			//var_dump($_POST['f_content']);
 			//var_dump($_POST['f_content_edit']);
-       			$this->content->update_content($_POST['f_content'], $_POST['f_content_edit'] );                        
+       			                        
 
 		}
 
