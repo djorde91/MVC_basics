@@ -9,7 +9,7 @@ class App
 	protected $conn;
 
 	protected $urls = [
-		'admin' => 'others/admin'
+		'admin' => 'admin/admin'
 	];
 
 	public function __construct()
@@ -58,7 +58,7 @@ class App
 
 
 	public function parseUrl()
-	{	
+	{	// falta que el admin tenga un controlador propio unico.
 		if (isset($_GET['url'])) 	
 		{
 			$url = $_GET['url'];

@@ -6,13 +6,13 @@ class Ajax extends Controller
 		protected $content;
 
 		public function __construct(){
-		$this->content = $this->model('m_Others');
+		$this->content = $this->model('m_admin');
 		}
 
 		public function login(){
 
 			if (isset($_POST['f_iniciar'])) {
-				
+					
 					if($this->content->iniciar_sesion($_POST['f_username'], $_POST['f_password']))
 					{
 					echo "login_correcto";	
@@ -46,7 +46,7 @@ class Ajax extends Controller
 
 			$array_pages = $this->content->show_pages();	
 			//var_dump($array_pages);
-			
+
 		    foreach ($array_pages as $value): 
 			    echo'
 			    <tr>
