@@ -6,18 +6,16 @@ class App
 	protected $method = 'index';
 	protected $params = [];
 	protected $url;
-
-	//Permitir al usuario crear sus propias páginas desde la home
-	//Pendiente hacer un select en la BBDD de las páginas creadas por el usuario y añadirlas al array. (CMS)
+	protected $conn;
 
 	protected $urls = [
-		'contacto' => 'others/contacto',
-		'admin' => 'others/admin',
-		'test' => 'home/test'
+		'admin' => 'others/admin'
 	];
 
 	public function __construct()
 	{
+	    $this->conn = new Database();
+        $this->conn->connect();
 
 		$this->url = $this->parseUrl();
 
@@ -60,19 +58,33 @@ class App
 
 
 	public function parseUrl()
-	{
-		if (isset($_GET['url'])) 
+	{	
+		if (isset($_GET['url'])) 	
 		{
 			$url = $_GET['url'];
+			$this->urls = self::select_urls($url);
+			
+			$bbdd_url = $this->urls["page_name"];
 
-			if(isset($this->urls[$_GET['url']]))
-				$url = $this->urls[$_GET['url']];
-            //array($result['page_url'], $result[])
-            //
+			if($url == $bbdd_url){
+				$bbdd_url = $this->urls = "others/" . $bbdd_url ;
+				$url = $bbdd_url;
+			}
+
 			return $url = explode('/',filter_var(trim($url, '/'),FILTER_SANITIZE_URL));
 				
 		}
 	}
+
+	 public function select_urls($p_name){ 
+
+      $stmt = $this->conn->do_query("SELECT page_name FROM pages WHERE page_name = :p_name");
+      $stmt->execute(array(':p_name'=>$p_name));
+      $filas = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      return $filas;
+
+    }
 
 }
 

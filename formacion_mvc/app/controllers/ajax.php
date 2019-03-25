@@ -46,7 +46,7 @@ class Ajax extends Controller
 
 			$array_pages = $this->content->show_pages();	
 			//var_dump($array_pages);
-
+			
 		    foreach ($array_pages as $value): 
 			    echo'
 			    <tr>
