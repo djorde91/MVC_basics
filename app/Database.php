@@ -4,7 +4,7 @@ class Database {
 	   private $DB_host = "localhost"; 
 	   private $DB_user = "root";
 	   private $DB_pass = "";
-	   private $DB_name = "formacion_mvc";
+	   private $DB_name = "mvc_basics";
 
 	   protected $conn;
 
